@@ -2,7 +2,7 @@
 
 This is a program I wrote as I was exploring Java for the first time. This is a text based adventure with character creation, monster generation, and a battle system. I had lots of fun while learning about Java and using it to make this little game.
 
-[Demo Video](https://www.youtube.com/watch?v=Bef5b9lT4sU)
+[Demo Video](https://www.youtube.com/watch?v=TMwZGNJetVM)
 
 # Development Environment
 
