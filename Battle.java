@@ -33,14 +33,29 @@ public class Battle {
             if (this.playeri ==1){
                 player_turn(player, monster);
                 monster_turn(player, monster, monstername);
+
+                System.out.print("\nPress Enter to continue\n");
+                Scanner next = new Scanner(System.in);
+                String nothing = next.nextLine(); // Makes it so you need to press enter to continue
             }
             else{
                 monster_turn(player, monster, monstername);
                 player_turn(player, monster);
+
+                System.out.print("\nPress Enter to continue\n");
+                Scanner next = new Scanner(System.in);
+                String nothing = next.nextLine(); // Makes it so you need to press enter to continue
             }
 
 
-        }        
+        } 
+        
+        if(player.xp >= 3){
+            player.levelup();
+        }
+        System.out.print("\nPress Enter to continue\n");
+        Scanner next = new Scanner(System.in);
+        String nothing = next.nextLine(); // Makes it so you need to press enter to continue
 
     }
     
@@ -54,7 +69,7 @@ public class Battle {
         if (action == 1){
             monster.health = monster.health - player.strength; // Damage is dealt
 
-            System.out.println("You dealt: " + player.strength + " damage\n\n"); 
+            System.out.println("\n\nYou dealt: " + player.strength + " damage\n"); 
         }
         else if(action == 2){
             playeri = 0; //Player and monster turn order are both set to 0, effectivly ending the fight
@@ -71,16 +86,30 @@ public class Battle {
 
     public void monster_turn(Actor player, Monster monster, String monstername){
 
-        player.health = player.health - monster.strength;
+         //If the player dealt a ton of damage and the monster is first, he will have the opportunity to runaway
+        if(monster.health <= monster.health/5 && monsteri == 1 && monster.health > 0){
+            monsteri = 0;
+            System.out.println(monstername + " ran away");
+        }
+        else if(monster.health <= 0){
+            monsteri = 0;
+            playeri = 0;
+            System.out.println("You have defeated " + monstername + "\n");
+
+            player.xp = monster.xp;
+        }
+        else{
+
+            player.health = player.health - monster.strength;
         
         //Monster damage is dealt to player
         System.out.println(monstername + " hit you for: " + monster.strength + " damage\n\n");
         System.out.println("Health: " + player.health);
-
-        //If the player dealt a ton of damage and the monster is first, he will have the opportunity to runaway
-        if(monster.health <= monster.health/5 && monsteri == 1){
-            monsteri = 0;
         }
+        
+        
+
+       
 
     }
 

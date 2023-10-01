@@ -54,6 +54,7 @@ public class Monster extends Actor {
         randGen monHealth = new randGen();
         randGen monStrength = new randGen();
         randGen monIntell = new randGen();
+        randGen monXp = new randGen();
 
 
         switch(lvl){ //Generates Monster stats based on player level
@@ -62,6 +63,7 @@ public class Monster extends Actor {
                 strength = monStrength.RanInt(2, 3);
                 intelligence = monIntell.RanInt(2, 2);
                 caps = randGen.RanInt(2, 3);
+                xp = monXp.RanInt(3, 5);
                 break;
             case 1:
                 health = randGen.RanInt(3, 10);
